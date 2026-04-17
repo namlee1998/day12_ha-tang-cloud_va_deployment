@@ -60,7 +60,7 @@
 
 ### Exercise 3.1: Railway deployment
 
-- URL: https://my-agent-5sd9.onrender.com 
+- URL: [https://my-agent-5sd9.onrender.com ](https://my-agent-z78g.onrender.com)
 - Screenshot: (add ảnh vào repo, ví dụ `/docs/deploy.png`)
 
 ---
