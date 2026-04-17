@@ -16,7 +16,10 @@ r = redis.from_url(settings.REDIS_URL)
 class AskRequest(BaseModel):
     question: str
 
-
+@app.get("/")
+def root():
+    return {"status": "ok"}
+    
 @app.get("/health")
 def health():
     return {"status": "ok"}
@@ -28,7 +31,7 @@ def ready():
         r.ping()
         return {"status": "ready"}
     except Exception:
-        raise HTTPException(status_code=500, detail="Redis not ready")
+        raise HTTPException(status_code=503, detail="Redis not ready")
 
 
 @app.post("/ask")
