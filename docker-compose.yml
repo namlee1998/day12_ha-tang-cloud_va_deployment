@@ -1,0 +1,25 @@
+
+
+services:
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  agent:
+    build: .
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - AGENT_API_KEY=secret
+    depends_on:
+      - redis
+
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    depends_on:
+      - agent
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
